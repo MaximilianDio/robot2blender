@@ -3,6 +3,9 @@
 from svglib.svglib import svg2rlg
 from reportlab.graphics import renderPDF, renderPM
 
-drawing = svg2rlg("out/robot0000.svg")
-renderPDF.drawToFile(drawing, "out/robot.pdf")
-# renderPM.drawToFile(drawing, "out/robot.png", fmt="PNG")
+files = ["robot_0000_0000.svg", "robot_0001_0000.svg"]
+
+for file in files:
+    drawing = svg2rlg(f"out/renders/{file}")
+    renderPDF.drawToFile(drawing, f"out/renders/{file.replace('.svg', '.pdf')}")
+    # renderPM.drawToFile(drawing, f"out/renders/{file.replace('.svg', '.png')}", fmt="PNG")
