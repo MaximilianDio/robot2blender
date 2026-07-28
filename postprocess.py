@@ -1,9 +1,13 @@
 # Postprocessing: transform to pdf: e.g.
 
+import os
+from pathlib import Path
 from svglib.svglib import svg2rlg
 from reportlab.graphics import renderPDF, renderPM
 
-files = ["robot_0000_0000.svg", "robot_0001_0000.svg"]
+render_dir = Path("out/renders")
+
+files = [f for f in os.listdir(render_dir) if f.endswith(".svg")]
 
 for file in files:
     drawing = svg2rlg(f"out/renders/{file}")
